@@ -10,7 +10,8 @@
   <script src="dist/bundle.js"></script>
   <script>
     axios({
-      method: 'get'
+      method: 'get',
+      url: 'http://localhost:3000/posts'
     }).then(value => {
       console.log(value);
     }, reason => {
