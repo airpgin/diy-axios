@@ -7,35 +7,27 @@
   <title>Axios test</title>
 </head>
 <body>
+  <button onclick="cancelRequest()">clickMe</button>
   <script src="dist/bundle.js"></script>
   <script>
 
-    axios.interceptors.request.use(function(config) {
-      console.log('request 拦截器');
-      console.log(config);
-      return config
-    }, function(error) {
-      console.log('request 错误');
-      console.log(error);
-      return error
-    })
-    axios.interceptors.response.use(function(config) {
-      console.log('response 拦截器');
-      console.log(config);
-      return config
-    }, function(error) {
-      console.log('response 错误');
-      console.log(error);
-      return error
-    })
+    var CancelToken = axios.CancelToken;
+    var cancel;
     axios({
       method: 'get',
-      url: 'http://localhost:3000/posts'
+      url: 'http://localhost:3000/posts',
+      cancelToken: new CancelToken(function excutor(c) {
+        cancel = c
+      })
     }).then(value => {
       console.log(value);
     }, reason => {
       console.log(reason);
     })
+
+    function cancelRequest() {
+      cancel()
+    }
     // axios.get('http://localhost:3000/posts')
   </script>
 </body>
