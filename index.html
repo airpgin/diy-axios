@@ -10,25 +10,14 @@
   <button onclick="cancelRequest()">clickMe</button>
   <script src="dist/bundle.js"></script>
   <script>
-
-    var CancelToken = axios.CancelToken;
-    var cancel;
-    axios({
-      method: 'get',
-      url: 'http://localhost:3000/posts',
-      cancelToken: new CancelToken(function executor(c) {
-        cancel = c
-      })
-    }).then(value => {
-      console.log(value);
-    }, reason => {
-      console.log(reason);
+    axios.get('http://localhost:3000/posts/1', {
+      abc: 'abc',
+      data: {
+        name: '张三李四王二麻子'
+      }
+    }).then(result => {
+      console.log(result);
     })
-
-    function cancelRequest() {
-      cancel()
-    }
-    // axios.get('http://localhost:3000/posts')
   </script>
 </body>
 </html>
