@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Axios test</title>
-</head>
-<body>
-  <button onclick="cancelRequest()">clickMe</button>
-  <script src="dist/bundle.js"></script>
-  <script>
-    axios.get('http://localhost:3000/posts/1', {
-      abc: 'abc',
-      data: {
-        name: '张三李四王二麻子'
-      }
-    }).then(result => {
-      console.log(result);
-    })
-  </script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Axios test</title>
+  </head>
+  <body>
+    <button onclick="cancelRequest()">clickMe</button>
+    <script src="dist/bundle.js"></script>
+    <script>
+      axios({
+        url: 'http://localhost:3000/posts',
+        method: 'post',
+        data: {
+          title: 'json-server2',
+          author: 'typicode2',
+        },
+      }).then((result) => {
+        console.log(result)
+      })
+    </script>
+  </body>
 </html>
